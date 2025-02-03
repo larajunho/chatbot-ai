@@ -1,0 +1,34 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.*.local
+
+# Build folders
+dist/
+build/
+
+# Sistema de cache
+.cache/
+
+# Arquivos de IDEs
+.vscode/
+.idea/
+
+# Arquivos de dependências de pacotes
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos de testes
+coverage/
+
+# Arquivos de backup
+*.bak
+*.swp
