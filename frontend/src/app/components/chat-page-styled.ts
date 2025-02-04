@@ -34,18 +34,6 @@ export const ChatBox = styled.div.withConfig({
   height: 70vh;
   border: 2px solid #00faff;
   position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border-radius: 24px;
-    box-shadow: 0 0 20px #00faff;
-    z-index: -1;
-  }
 `;
 
 export const ExpandButton = styled.button`
