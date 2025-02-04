@@ -34,6 +34,26 @@ export const ChatBox = styled.div.withConfig({
   height: 70vh;
   border: 2px solid #00faff;
   position: relative;
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(128, 0, 128, 0.8);
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(128, 0, 128, 1);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+    border: 2px solid rgba(128, 0, 128, 0.4);
+  }
 `;
 
 export const ExpandButton = styled.button`
