@@ -1,18 +1,18 @@
-#Projeto de ChatBot com Gemini
+# Projeto de ChatBot com Gemini
 
 Este projeto consiste em um chatbot integrado com a API do Google Gemini. Ele possui um backend em Node.js puro e um frontend desenvolvido com Next.js + React.
 
-#🚀 Como Rodar o Projeto
+# 🚀 Como Rodar o Projeto
 
-##📦 1. Configurar e Rodar o Backend
+## 📦 1. Configurar e Rodar o Backend
 
-###Requisitos:
+### Requisitos:
 
 - Node.js instalado (versão recomendada: 18 ou superior)
 
 - Um arquivo .env com a chave da API do Gemini
 
-###Passos:
+### Passos:
 
 Navegue até a pasta do backend:
 
@@ -32,13 +32,13 @@ Inicie o servidor:
 
 O backend estará rodando na porta 5001.
 
-###💻 2. Configurar e Rodar o Frontend
+## 💻 2. Configurar e Rodar o Frontend
 
-Requisitos:
+### Requisitos:
 
 - Node.js instalado (versão recomendada: 18 ou superior)
 
-Passos:
+### Passos:
 
 Navegue até a pasta do frontend:
 
@@ -54,7 +54,7 @@ Inicie o frontend em modo de desenvolvimento:
 
 O frontend estará acessível em http://localhost:3000.
 
-###🛠 Tecnologias Utilizadas
+## 🛠 Tecnologias Utilizadas
 
 Backend:
 
@@ -78,7 +78,7 @@ Frontend:
 
 -React Icons
 
-##📌 Observações
+## 📌 Observações
 
 Certifique-se de que o backend está rodando antes de iniciar o frontend.
 
