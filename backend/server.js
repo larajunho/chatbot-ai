@@ -1,11 +1,22 @@
-require("dotenv").config();
 const http = require("http");
 const { WebSocketServer } = require("ws");
-const { parse } = require("querystring");
+require("dotenv").config();
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 const server = http.createServer((req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    res.writeHead(204);
+    res.end();
+    return;
+  }
+
   if (req.method === "POST" && req.url === "/chat") {
     let body = "";
 
@@ -15,27 +26,21 @@ const server = http.createServer((req, res) => {
 
     req.on("end", async () => {
       const { message } = JSON.parse(body);
-      try {
-        const openaiResponse = await fetch(
-          "https://api.openai.com/v1/chat/completions",
-          {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${OPENAI_API_KEY}`,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              model: "gpt-4",
-              messages: [{ role: "user", content: message }],
-            }),
-          }
-        );
+      console.log("Requisição recebida:", message);
 
-        const data = await openaiResponse.json();
+      try {
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+        const result = await model.generateContent([message]);
+        const response = await result.response;
+        const text = response.text();
+
+        console.log("Resposta do Gemini:", text);
+
         res.writeHead(200, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({ reply: data.choices[0].message.content }));
+        res.end(JSON.stringify({ reply: text }));
       } catch (error) {
-        console.error("Erro na API OpenAI:", error);
+        console.error("Erro na API Gemini:", error);
         res.writeHead(500, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ error: "Erro ao processar a mensagem" }));
       }
@@ -54,25 +59,15 @@ wss.on("connection", (ws) => {
   ws.on("message", async (message) => {
     const data = JSON.parse(message);
     try {
-      const openaiResponse = await fetch(
-        "https://api.openai.com/v1/chat/completions",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${OPENAI_API_KEY}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            model: "gpt-4",
-            messages: [{ role: "user", content: data.message }],
-          }),
-        }
-      );
+      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-      const result = await openaiResponse.json();
-      ws.send(JSON.stringify({ reply: result.choices[0].message.content }));
+      const result = await model.generateContent([data.message]);
+      const response = await result.response;
+      const text = response.text();
+
+      ws.send(JSON.stringify({ reply: text }));
     } catch (error) {
-      console.error("Erro na API OpenAI:", error);
+      console.error("Erro na API Gemini:", error);
       ws.send(JSON.stringify({ error: "Erro ao processar a mensagem" }));
     }
   });
