@@ -1,84 +1,84 @@
-Projeto de ChatBot com Gemini
+# Projeto de ChatBot com Gemini
 
 Este projeto consiste em um chatbot integrado com a API do Google Gemini. Ele possui um backend em Node.js puro e um frontend desenvolvido com Next.js + React.
 
-🚀 Como Rodar o Projeto
+# 🚀 Como Rodar o Projeto
 
-📦 1. Configurar e Rodar o Backend
+## 📦 1. Configurar e Rodar o Backend
 
-Requisitos:
+### Requisitos:
 
-Node.js instalado (versão recomendada: 18 ou superior)
+- Node.js instalado (versão recomendada: 18 ou superior)
 
-Um arquivo .env com a chave da API do Gemini
+- Um arquivo .env com a chave da API do Gemini
 
-Passos:
+### Passos:
 
 Navegue até a pasta do backend:
 
-cd backend
+```cd backend```
 
 Instale as dependências:
 
-npm install
+```npm install```
 
 Crie um arquivo .env na raiz do backend e adicione sua chave da API:
 
-GEMINI_API_KEY=SUA_CHAVE_AQUI
+```GEMINI_API_KEY=SUA_CHAVE_AQUI```
 
 Inicie o servidor:
 
-node server.js 
+```node server.js ```
 
 O backend estará rodando na porta 5001.
 
-💻 2. Configurar e Rodar o Frontend
+## 💻 2. Configurar e Rodar o Frontend
 
-Requisitos:
+### Requisitos:
 
-Node.js instalado (versão recomendada: 18 ou superior)
+- Node.js instalado (versão recomendada: 18 ou superior)
 
-Passos:
+### Passos:
 
 Navegue até a pasta do frontend:
 
-cd frontend
+```cd frontend```
 
 Instale as dependências:
 
-npm install
+```npm install```
 
 Inicie o frontend em modo de desenvolvimento:
 
-npm run dev
+```npm run dev```
 
 O frontend estará acessível em http://localhost:3000.
 
-🛠 Tecnologias Utilizadas
+## 🛠 Tecnologias Utilizadas
 
 Backend:
 
-Node.js puro
+-Node.js puro
 
-WebSockets (ws)
+-WebSockets (ws)
 
-Google Gemini API (@google/generative-ai)
+-Google Gemini API (@google/generative-ai)
 
-dotenv para variáveis de ambiente
+-dotenv para variáveis de ambiente
 
-cors para requisições entre diferentes domínios
+-cors para requisições entre diferentes domínios
 
 Frontend:
 
-Next.js 15
+-Next.js 15
 
-React 19
+-React 19
 
-Styled Components
+-Styled Components
 
-React Icons
+-React Icons
 
-📌 Observações
+## 📌 Observações
 
 Certifique-se de que o backend está rodando antes de iniciar o frontend.
 
